@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "delivery_details")
-public class Delivery {
+public class DeliveryDetails {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class Delivery {
         return id;
     }
 
-    public Delivery setId(int id) {
+    public DeliveryDetails setId(int id) {
         this.id = id;
         return this;
     }
@@ -44,7 +44,7 @@ public class Delivery {
         return boardingLocation;
     }
 
-    public Delivery setBoardingLocation(String boardingLocation) {
+    public DeliveryDetails setBoardingLocation(String boardingLocation) {
         this.boardingLocation = boardingLocation;
         return this;
     }
@@ -53,7 +53,7 @@ public class Delivery {
         return travellingDateTime;
     }
 
-    public Delivery setTravellingDateTime(Date travellingDateTime) {
+    public DeliveryDetails setTravellingDateTime(Date travellingDateTime) {
         this.travellingDateTime = travellingDateTime;
         return this;
     }
@@ -62,7 +62,7 @@ public class Delivery {
         return itineraryPhoto;
     }
 
-    public Delivery setItineraryPhoto(byte[] itineraryPhoto) {
+    public DeliveryDetails setItineraryPhoto(byte[] itineraryPhoto) {
         this.itineraryPhoto = itineraryPhoto;
         return this;
     }
@@ -71,7 +71,7 @@ public class Delivery {
         return maxWeight;
     }
 
-    public Delivery setMaxWeight(float maxWeight) {
+    public DeliveryDetails setMaxWeight(float maxWeight) {
         this.maxWeight = maxWeight;
         return this;
     }
@@ -80,7 +80,7 @@ public class Delivery {
         return remarks;
     }
 
-    public Delivery setRemarks(String remarks) {
+    public DeliveryDetails setRemarks(String remarks) {
         this.remarks = remarks;
         return this;
     }

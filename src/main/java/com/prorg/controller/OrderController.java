@@ -6,6 +6,7 @@ import com.prorg.model.CourierDetails;
 import com.prorg.model.Order;
 import com.prorg.model.StatusType;
 import com.prorg.model.User;
+import com.prorg.service.DeliveryDetailsService;
 import com.prorg.service.OrderService;
 import com.prorg.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +25,18 @@ import javax.servlet.http.HttpSession;
 public class OrderController {
     private final OrderService orderService;
     private final UserService userService;
+    private final DeliveryDetailsService deliveryDetailsService;
 
     @Autowired
-    public OrderController(OrderService orderService, UserService userService) {
+    public OrderController(OrderService orderService, UserService userService, DeliveryDetailsService deliveryDetailsService) {
         this.orderService = orderService;
         this.userService = userService;
+        this.deliveryDetailsService = deliveryDetailsService;
     }
 
     @RequestMapping(value = Constants.Courier.NEW_ORDER, method = RequestMethod.POST)
-    public String saveCourierDetails(HttpServletRequest request, HttpSession session,
-                                     Model model, @RequestParam CommonsMultipartFile fileUpload) throws Exception {
+    public String save(HttpServletRequest request, HttpSession session,
+                       Model model, @RequestParam CommonsMultipartFile fileUpload) throws Exception {
 
         Response<User> userById = userService.getUserById((int) session.getAttribute(Constants.SessionKeys.LOGGED_IN_USER));
         Response<User> carrierById = userService.getUserById(Integer.valueOf(request.getParameter("carrier")));
@@ -58,13 +61,17 @@ public class OrderController {
                 .setCourierDetails(courierDetails);
 
         Response save = orderService.saveOrder(order);
-
-        model.addAttribute(Constants.ModelAttributes.MESSAGE, save.isSuccessful() ? "Success" : "Failed");
+        String message = "Failure";
+        if (save.isSuccessful()){
+            message = "Success";
+            deliveryDetailsService.delete(carrierById.data().getDelivery());
+        }
+        model.addAttribute(Constants.ModelAttributes.MESSAGE, message);
         return Constants.Route.REDIRECT + Constants.Route.ROOT;
     }
 
     @RequestMapping(value = Constants.Courier.GET_ORDER, method = RequestMethod.GET)
-    public String saveCourierDetails(Model model, @PathVariable("id") int maskedId) throws Exception {
+    public String save(Model model, @PathVariable("id") int maskedId) throws Exception {
         Response orderById = orderService.getOrderByMaskedId(maskedId);
         if (orderById.isSuccessful()) {
             model.addAttribute(Constants.ModelAttributes.RESULT, orderById.data());

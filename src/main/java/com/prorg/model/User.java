@@ -49,7 +49,7 @@ public class User {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_details_id")
-    private Delivery delivery;
+    private DeliveryDetails delivery;
 
     @OneToMany(mappedBy = "placedBy")
     @LazyCollection(value = LazyCollectionOption.FALSE)
@@ -153,11 +153,11 @@ public class User {
         return Objects.hash(id, firstName, lastName, email, salt, passwordHash, password);
     }
 
-    public Delivery getDelivery() {
+    public DeliveryDetails getDelivery() {
         return delivery;
     }
 
-    public User setDelivery(Delivery delivery) {
+    public User setDelivery(DeliveryDetails delivery) {
         this.delivery = delivery;
         return this;
     }
