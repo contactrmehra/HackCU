@@ -1,6 +1,6 @@
-# Agile-board
+# HackCU
 
-A simple Agile board similar to [Trello.](https://trello.com/) This tool was built for a design cum refactoring exercise.
+Insert Description here.
 
 ## Getting Started
 
