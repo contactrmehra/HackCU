@@ -36,4 +36,9 @@ public class Constants {
     public class User{
         public static final String USER_PROFILE = "/profile";
     }
+
+    public class Courier{
+        public static final String SAVE_COURIER_DETAILS = "/courier/details";
+        public static final String GET_COURIER_DETAIL = "/courier/details/get";
+    }
 }
