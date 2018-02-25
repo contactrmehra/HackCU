@@ -38,6 +38,6 @@ public class RegisterController {
         }
 
         model. addAttribute(Constants.ModelAttributes.MESSAGE, redirectMessage);
-        return Constants.Route.REDIRECT + Constants.Route.STORYBOARDS;
+        return Constants.Route.REDIRECT + Constants.Route.ROOT;
     }
 }

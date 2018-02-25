@@ -38,7 +38,7 @@ public class LoginController {
             if (referer != null) {
                 return Constants.Route.REDIRECT + referer;
             }
-            return Constants.Route.REDIRECT + Constants.Route.STORYBOARDS;
+            return Constants.Route.REDIRECT + Constants.Route.ROOT;
         }
         model.addAttribute(Constants.ModelAttributes.MESSAGE, "Login Failed");
         return Constants.RedirectPage.LOGIN_FORM;
@@ -47,6 +47,6 @@ public class LoginController {
     @RequestMapping(value = Constants.Route.LOGOUT)
     public String logout(HttpSession session) {
         session.removeAttribute(Constants.SessionKeys.LOGGED_IN_USER);
-        return Constants.Route.REDIRECT + Constants.Route.STORYBOARDS;
+        return Constants.Route.REDIRECT + Constants.Route.ROOT;
     }
 }

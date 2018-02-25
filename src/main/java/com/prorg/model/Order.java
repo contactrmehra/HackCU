@@ -3,7 +3,6 @@ package com.prorg.model;
 import com.prorg.helper.hibernate.PostgresEnumType;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -13,6 +12,8 @@ import java.util.Date;
 @Table(name = "order_details")
 @TypeDef(name = "pg_sql_enum", typeClass = PostgresEnumType.class)
 public class Order {
+    private static final int MASKING_NUMBER = 1234566789;
+
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,14 +39,10 @@ public class Order {
     @JoinColumn(name = "carrier_id")
     private User carrier;
 
-    @OneToOne(fetch = FetchType.LAZY)
     @NotNull
-    @NotEmpty
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "courier_details_id")
     private CourierDetails courierDetails;
-
-    public Order(CourierDetails courierDetails) {
-        this.courierDetails = courierDetails;
-    }
 
     public int getId() {
         return id;
@@ -99,5 +96,22 @@ public class Order {
     public Order setCarrier(User carrier) {
         this.carrier = carrier;
         return this;
+    }
+
+    public CourierDetails getCourierDetails() {
+        return courierDetails;
+    }
+
+    public Order setCourierDetails(CourierDetails courierDetails) {
+        this.courierDetails = courierDetails;
+        return this;
+    }
+
+    public int getMaskedId() {
+        return MASKING_NUMBER + id;
+    }
+
+    public static int unMaskId(int maskedId) {
+        return maskedId - MASKING_NUMBER;
     }
 }

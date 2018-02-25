@@ -7,6 +7,7 @@ public class Constants {
 
     public static class ModelAttributes {
         public static final String MESSAGE = "message";
+        public static final String RESULT = "result";
     }
 
     public static class Route {
@@ -14,7 +15,6 @@ public class Constants {
         public static final String LOGOUT = "/logout";
         public static final String REGISTER = "/register";
         public static final String ROOT = "/";
-        public static final String STORYBOARDS = "/storyboards";
         public static final String REDIRECT = "redirect:";
     }
 
@@ -38,7 +38,7 @@ public class Constants {
     }
 
     public class Courier{
-        public static final String SAVE_COURIER_DETAILS = "/courier/details";
-        public static final String GET_COURIER_DETAIL = "/courier/details/get";
+        public static final String NEW_ORDER = "/orders";
+        public static final String GET_ORDER = "/orders/{id}";
     }
 }
