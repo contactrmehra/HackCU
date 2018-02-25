@@ -1,249 +1,107 @@
-/*App CSS*/
-@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans');
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-.app-color{
-    background-color: #0E6AA6;
+.login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
 }
-.home-margin{
-    margin:0;
-}
-body {
-    font-family: 'Alegreya Sans', serif;
-}
-.heading-color{
-    color:#fff;
-}
-.no-padding{
-    padding: 0;
-}
-.no-margin{
-    margin: 0;
-}
-.header-box{
-    display: inline-flex;
-    justify-content: space-between;
-    width: 100%;
-    height:100px;
-    background-color: #0D78BE;
-    font-weight: bold;
-    align-content: center;
-    align-items: center;
-}
-.text-center{
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
     text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.color-white{
-    color:#fff;
-}
-.color-black{
-    color:#000000;
-}
-.image-logo{
-    margin-top: 50px;
-}
-.width-full{
+.form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
     width: 100%;
-}
-.login-box {
-    width: 50%;
-}
-.inline-flex{
-    display: inline-flex;
-}
-.flex-center{
-    display: flex;
-    justify-content: center;
-}
-.storyboard-text-box{
-    text-align: center;
-}
-.storyboard-text-box input{
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
     box-sizing: border-box;
-    border: none;
-    border-radius: 6px;
-    margin:10px auto;
-    color: #444;
-    outline: none;
-    text-align: center;
+    font-size: 14px;
 }
-
-.storyboard-button input{
-    background-color: #1ea9b5;
-    border: none;
-    color:white;
-    font-weight: bold;
-}
-.storyboard-button-1 input{
-    background-color: #1792b5;
-    border: none;
-    color:white;
-    font-weight: bold;
-}
-.text-box input{
+.form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
     width: 100%;
-    box-sizing: border-box;
-    border: none;
-    border-radius: 6px;
-    font-size: 18px;
-    padding: 8px 10px;
-    margin-right: 8px;
-    color: #444;
-    outline: none;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
 }
-.header-button1 a{
- color:#fff;
+.form button:hover,.form button:active,.form button:focus {
+    background: #43A047;
+}
+.form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+.form .message a {
+    color: #4CAF50;
     text-decoration: none;
-}
-.header-button1{
-    color:white;
-    padding: 10px;
-    border-radius: 5px;
-    margin-right: 20px;
-    background-color: #57A241;
-    margin-left: 20px;
-}
-.header-button2 a{
-    color: #ffffff;
-    text-decoration: none;
-}
-.header-button2{
-    background-color: #186AA5;
-    padding: 10px;
-    border-radius: 5px;
-    margin-right: 20px;
-
-}
-
-.login-button input{
-    background-color: #57A241;
-    color:white;
-}
-.sign-notamember{
-    font-size: 20px;
-    color:#999
-}
-.sign-notamember a{
-    color:#999;
-}
-
-/*HomePage CSS*/
-.header-login{
-    justify-content: flex-end;
 }
 .container {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: 100px 800px 100px;
+    position: relative;
+    z-index: 1;
+    max-width: 300px;
+    margin: 0 auto;
 }
-.image-logo-header img{
-    width: 50%;
+.container:before, .container:after {
+    content: "";
+    display: block;
+    clear: both;
 }
-.login-button-header input{
-    background-color: #58A043;
-    color: white !important;
+.container .info {
+    margin: 50px auto;
+    text-align: center;
 }
-.swimlane-top{
-    display: flex;
-    justify-content: space-between;
+.container .info h1 {
+    margin: 0 0 15px;
+    padding: 0;
+    font-size: 36px;
+    font-weight: 300;
+    color: #1a1a1a;
 }
-.storyboard-tag{
-    margin-right: 15px;
-    background-color:#36c45a;
-    display: inline-flex;
+.container .info span {
+    color: #4d4d4d;
+    font-size: 12px;
 }
-.storyboard-tag a{
-    color:#fff;
+.container .info span a {
+    color: #000000;
     text-decoration: none;
-    padding: 50px;
 }
-.text-box-header input{
-    box-sizing: border-box;
-    border: none;
-    border-radius: 6px;
-    font-size: 18px;
-    padding: 8px 10px;
-    margin-right: 10px;
-    color: #444;
-    outline: none;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
+.container .info span .fa {
+    color: #EF3B3A;
 }
-.width-30{
-    width:30%;
-}
-.width-70{
-    width:70%;
-}
-header {
-    background-color: #1877BD;
-    grid-column: span 10;
-}
-aside {
-    grid-column: span 5;
-    background-color: #186AA5;
-}
-main {
-    grid-column: span 5;
-    background-color: #186AA5;
-}
-footer {
-    grid-column: span 10;
-    background-color: #1877BD;
-}
-.register-now{
-    height: 80px;
-    font-size: 50px;
-    margin-top: 50px;
+body {
+    background: #76b852;
+    background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+    background: -moz-linear-gradient(right, #76b852, #8DC26F);
+    background: -o-linear-gradient(right, #76b852, #8DC26F);
+    background: linear-gradient(to left, #76b852, #8DC26F);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.swimlane {
-    border: black solid 2px;
-    padding: 10px;
-    display: inline-block;
-    width: 200px;
-    margin-right: 10px;
-    border-radius: 5px;
-    background-color: #4DBD6B;
+.login-form-message {
+    margin-bottom: 30px;
+    margin-top: 0;
 }
 
-.swimlane-title {
-    font-weight: bold;
-}
-
-.card-form {
-    background-color: #51b5ab;
-    margin-top: 5px;
-    border: 2px solid #7c7c7c;
-    border-radius: 5px;
-}
-
-.create-card {
-    display: none;
-    background-color: #E1E3E5;
-    border: black solid 2px;
-    padding: 10px;
-}
-
-.add-swimlane{
-    width: 250px;
-    background-color: #42A15B;
-    text-align: center;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 25px;
-}
-
-.storyboards-container {
-    padding: 10px;
-}
-
-.right {
-    float: right;
-}
-.add-boxes {
-    display: inline-block;
+.login-error-message {
+    font-size: small;
+    color: red;
 }
