@@ -29,8 +29,12 @@ public class Order {
     private String lastLocation;
 
     @ManyToOne
-    @JoinColumn(name="belongs_to_user_id", nullable=false)
-    private User userTheOrderBelongsTo;
+    @JoinColumn(name="placed_by_user_id", nullable=false)
+    private User placedBy;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "carrier_id")
+    private User carrier;
 
     public int getId() {
         return id;
@@ -68,12 +72,21 @@ public class Order {
         return this;
     }
 
-    public User getUserTheOrderBelongsTo() {
-        return userTheOrderBelongsTo;
+    public User getPlacedBy() {
+        return placedBy;
     }
 
-    public Order setUserTheOrderBelongsTo(User userTheOrderBelongsTo) {
-        this.userTheOrderBelongsTo = userTheOrderBelongsTo;
+    public Order setPlacedBy(User placedBy) {
+        this.placedBy = placedBy;
+        return this;
+    }
+
+    public User getCarrier() {
+        return carrier;
+    }
+
+    public Order setCarrier(User carrier) {
+        this.carrier = carrier;
         return this;
     }
 }

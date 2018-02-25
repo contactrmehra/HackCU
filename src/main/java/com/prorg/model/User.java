@@ -51,7 +51,7 @@ public class User {
     @JoinColumn(name = "delivery_details_id")
     private Delivery delivery;
 
-    @OneToMany(mappedBy = "userTheOrderBelongsTo")
+    @OneToMany(mappedBy = "placedBy")
     @LazyCollection(value = LazyCollectionOption.FALSE)
     private List<Order> orders;
 
