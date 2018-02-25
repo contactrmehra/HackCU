@@ -1,6 +1,9 @@
 package com.prorg.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 @Entity
@@ -11,17 +14,25 @@ public class UserProfile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
     private Date dob;
 
+    @NotNull
     private String address;
 
+    @NotNull
     private String state;
 
+    @NotNull
     private String country;
 
     @Column(name = "government_photo_id")
+    @NotNull
+    @NotEmpty
     private byte[] governmentPhotoId;
 
+    @NotNull
+    @NotEmpty
     private String pinCode;
 
     private String occupation;
@@ -29,10 +40,17 @@ public class UserProfile {
     @Column(name = "frequent_flyer")
     private boolean frequentFlyer;
 
+    @NotNull
+    @NotEmpty
     private byte[] photo;
 
     @Column(name = "phone_number")
+    @NotNull
+    @NotEmpty
     private String phoneNumber;
+
+    @Column(name = "verified_customer")
+    private boolean verifiedCustomer;
 
     public int getId() {
         return id;
@@ -131,5 +149,13 @@ public class UserProfile {
     public UserProfile setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
+    }
+
+    public boolean isVerifiedCustomer() {
+        return verifiedCustomer;
+    }
+
+    public void setVerifiedCustomer(boolean verifiedCustomer) {
+        this.verifiedCustomer = verifiedCustomer;
     }
 }

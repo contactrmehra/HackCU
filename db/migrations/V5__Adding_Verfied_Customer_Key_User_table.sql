@@ -1,0 +1,1 @@
+ALTER TABLE user_details ADD VERIFIED_CUSTOMER boolean;

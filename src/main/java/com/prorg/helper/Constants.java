@@ -32,4 +32,8 @@ public class Constants {
     public class HttpMethod {
         public static final String DELETE = "_delete";
     }
+
+    public class User{
+        public static final String USER_PROFILE = "/profile";
+    }
 }
