@@ -37,6 +37,10 @@ public class User {
     @Column(name = "passwd_hash")
     private String passwordHash;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_profile")
+    private UserProfile userProfile;
+
     @Transient
     private String password;
 
@@ -105,6 +109,15 @@ public class User {
     }
     public User setPassword(String password) {
         this.password = password;
+        return this;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public User setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
         return this;
     }
 
