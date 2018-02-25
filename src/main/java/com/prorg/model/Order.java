@@ -3,8 +3,10 @@ package com.prorg.model;
 import com.prorg.helper.hibernate.PostgresEnumType;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -35,6 +37,15 @@ public class Order {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "carrier_id")
     private User carrier;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @NotNull
+    @NotEmpty
+    private CourierDetails courierDetails;
+
+    public Order(CourierDetails courierDetails) {
+        this.courierDetails = courierDetails;
+    }
 
     public int getId() {
         return id;

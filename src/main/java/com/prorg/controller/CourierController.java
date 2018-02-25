@@ -16,6 +16,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class CourierController {
@@ -24,7 +25,7 @@ public class CourierController {
     private CourierService courierService;
 
     @RequestMapping(value = Constants.Courier.SAVE_COURIER_DETAILS, method = RequestMethod.POST)
-    public String saveCourierDetails(HttpServletRequest request, HttpSession session, Model model,@RequestParam CommonsMultipartFile fileUpload) throws Exception {
+    public String saveCourierDetails(HttpServletRequest request, HttpSession session, Model model, @RequestParam CommonsMultipartFile fileUpload) throws Exception {
         Integer length = Integer.parseInt(request.getParameter("length"));
         Integer width = Integer.parseInt(request.getParameter("width"));
         Integer height = Integer.parseInt(request.getParameter("height"));
@@ -44,7 +45,18 @@ public class CourierController {
         }
 
         model.addAttribute(Constants.ModelAttributes.MESSAGE, redirectMessage);
-        return Constants.Route.REDIRECT + Constants.Route.STORYBOARDS;
+        return redirectMessage;
     }
+
+    @RequestMapping(value = Constants.Courier.GET_COURIER_DETAIL, method = RequestMethod.GET)
+    public List<CourierDetails> getCourierDetails(HttpServletRequest request, HttpSession session, Model model) throws Exception {
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        List<CourierDetails> courierDetailsList = null;
+        if (id != null) {
+            courierDetailsList = (List<CourierDetails>) courierService.getCourierDetails(id);
+        }
+        return courierDetailsList;
+    }
+
 }
 
