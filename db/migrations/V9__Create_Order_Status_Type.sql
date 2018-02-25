@@ -1,0 +1,1 @@
+CREATE TYPE order_status_type AS ENUM ('ORDER_PLACED', 'TRANSIT', 'PENDING', 'DELIVERED');

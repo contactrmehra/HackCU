@@ -2,11 +2,14 @@ package com.prorg.model;
 
 import com.prorg.helper.contraint.FieldMatch;
 import com.prorg.helper.contraint.PasswordHashMatch;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Objects;
 
 @FieldMatch(first = "password", second = "confirmPassword")
@@ -47,6 +50,10 @@ public class User {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_details_id")
     private Delivery delivery;
+
+    @OneToMany(mappedBy = "userTheOrderBelongsTo")
+    @LazyCollection(value = LazyCollectionOption.FALSE)
+    private List<Order> orders;
 
     @Transient
     private String password;
@@ -152,6 +159,15 @@ public class User {
 
     public User setDelivery(Delivery delivery) {
         this.delivery = delivery;
+        return this;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public User setOrders(List<Order> orders) {
+        this.orders = orders;
         return this;
     }
 }
