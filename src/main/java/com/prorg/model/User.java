@@ -5,6 +5,7 @@ import com.prorg.helper.contraint.PasswordHashMatch;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -32,14 +33,20 @@ public class User {
     private String email;
 
     @Column
+    @NotNull
     private String salt;
 
     @Column(name = "passwd_hash")
+    @NotNull
     private String passwordHash;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_profile")
+    @JoinColumn(name = "user_profile_id")
     private UserProfile userProfile;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "delivery_details_id")
+    private Delivery delivery;
 
     @Transient
     private String password;
@@ -137,5 +144,14 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, email, salt, passwordHash, password);
+    }
+
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    public User setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+        return this;
     }
 }
